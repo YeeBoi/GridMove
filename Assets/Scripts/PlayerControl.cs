@@ -7,9 +7,9 @@ public class PlayerControl : MonoBehaviour {
     Vector2 input;
     Vector2 velocity;
     float speed = 5f;
-    public LayerMask collisionMask;
     public Vector2 gridSpace;
     Collision2D collision;
+    bool smoothing = true;
 
 
     void Start () {
@@ -21,9 +21,10 @@ public class PlayerControl : MonoBehaviour {
     void Update()
     {
         input = new Vector2(Input.GetAxisRaw("x"), Input.GetAxisRaw("y"));
+        smoothing = (Mathf.Abs(input.x) < Mathf.Abs(input.y)) ? false : true;
         if (pos == transform.position)
         {
-            if (input.x != 0)
+            if (input.x != 0 && smoothing)
             {
                 velocity = new Vector2(input.x * gridSpace.x, 0);
                 if (collision.HorizontalCollisions(velocity, gridSpace.x))
