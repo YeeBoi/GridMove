@@ -9,6 +9,8 @@ public class Collision2D : MonoBehaviour
     public int horizontalRayCount = 4;
     public int verticalRayCount = 4;
 
+
+    const float skinWidth = .015f;
     float horizontalRaySpacing;
     float verticalRaySpacing;
     PlayerControl player;
@@ -54,12 +56,12 @@ public class Collision2D : MonoBehaviour
     public bool VerticalCollisions(Vector3 velocity, float rayLength)
     {
         bool canMove = true;
-        float directionY = Mathf.Sign(velocity.y);
+        float directionY = Mathf.Sign(velocity.y); 
 
         for (int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
-            rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+            rayOrigin += Vector2.right * (verticalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
             Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
@@ -72,9 +74,11 @@ public class Collision2D : MonoBehaviour
         return canMove;
     }
 
-    void UpdateRaycastOrigins()
+    public void UpdateRaycastOrigins()
     {
+
         Bounds bounds = collider.bounds;
+        bounds.Expand(skinWidth * -2);
 
         raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
         raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
@@ -85,6 +89,8 @@ public class Collision2D : MonoBehaviour
     void CalculateRaySpacing()
     {
         Bounds bounds = collider.bounds;
+        bounds.Expand(skinWidth * -2);
+
 
         horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
         verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
@@ -96,6 +102,6 @@ public class Collision2D : MonoBehaviour
     struct RaycastOrigins
     {
         public Vector2 topLeft, topRight;
-        public Vector2 bottomLeft, bottomRight;
+        public Vector2 bottomLeft, bottomRight;        
     }
 }
