@@ -311,7 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09bdb76b006d7d43aa3f83eac4b77a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSpace: {x: 1, y: 1}
+  interectionMaks:
+    serializedVersion: 2
+    m_Bits: 256
+  gridSpace: {x: 0.5, y: 0.5}
 --- !u!114 &1950491431
 MonoBehaviour:
   m_ObjectHideFlags: 0
