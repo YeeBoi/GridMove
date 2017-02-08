@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour {
     Vector2 input;
     Vector2 velocity;
     public LayerMask interectionMaks;
-    float speed = 5f;
+    float speed = 10f;
     public Vector2 gridSpace;
     Collision2D collision;
     bool smoothing = true;
