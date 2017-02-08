@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour {
     bool smoothing = true;
 
 
+
     void Start () {
         collision = GetComponent<Collision2D>();
         transform.position = Vector2.zero;
@@ -21,6 +22,10 @@ public class PlayerControl : MonoBehaviour {
 
     void Update()
     {
+        if (!Input.GetButton("Push"))
+        {
+            this.collision.collisionMask.value = 1280;
+        }
         input = new Vector2(Input.GetAxisRaw("x"), Input.GetAxisRaw("y"));
         smoothing = (Mathf.Abs(input.x) >= Mathf.Abs(input.y)) ? false : true;
         detectObject();
@@ -48,10 +53,13 @@ public class PlayerControl : MonoBehaviour {
 
     void detectObject()
     {
+        BoxMovement box;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity, 0.75f, interectionMaks);
-        if (hit)
+        if (hit && Input.GetButton("Push"))
         {
-            print("Object collisons");
-        }
+            box = hit.collider.GetComponent<BoxMovement>();
+            box.setCanMove(true);
+            this.collision.collisionMask = 256;
+        } 
     }
 }

@@ -101,7 +101,8 @@ GameObject:
   - component: {fileID: 656937270}
   - component: {fileID: 656937269}
   - component: {fileID: 656937268}
-  m_Layer: 8
+  - component: {fileID: 656937271}
+  m_Layer: 10
   m_Name: BrownBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +179,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &656937271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 656937267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa2cb3ee3178ae4ca3b23d16aeea66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1915159095
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interectionMaks:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   gridSpace: {x: 0.5, y: 0.5}
 --- !u!114 &1950491431
 MonoBehaviour:
@@ -328,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   horizontalRayCount: 8
   verticalRayCount: 8
 --- !u!212 &1950491432
