@@ -44,6 +44,9 @@ TagManager:
   - name: Wall
     uniqueID: 2773635375
     locked: 0
+  - name: Boxes
+    uniqueID: 3535755735
+    locked: 0
   - name: Player
     uniqueID: 714943659
     locked: 0

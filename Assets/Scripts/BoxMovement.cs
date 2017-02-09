@@ -13,7 +13,7 @@ public class BoxMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Move();        
+        Move();     
 	}
 
     void Move()
@@ -25,9 +25,14 @@ public class BoxMovement : MonoBehaviour {
         {
             transform.position = (Vector2)player.transform.position + diff;
         } 
-        if (!Input.GetButton("Push"))
+        if (!Input.GetButton("Push") && transform.position.x % player.gridSpace.x == 0 && 
+            transform.position.y % player.gridSpace.y == 0)
         {
             canMove = false;
+            if (this.gameObject.layer != 10)
+            {
+                this.gameObject.layer = 10;
+            }
         }       
     }
 
