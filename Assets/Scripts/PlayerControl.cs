@@ -54,7 +54,10 @@ public class PlayerControl : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity, 0.75f, interectionMaks);
         if (hit && Input.GetButton("Push"))
         {
-            longCollision();
+            if (velocity.x !=0 || velocity.y != 0)
+            {
+                seeThroughtCollision = gridSpace.x;
+            }
             if (velocity.x != 0)
             {
                 OnlyHorizontal = true;
@@ -68,22 +71,6 @@ public class PlayerControl : MonoBehaviour {
         } else
         {
             seeThroughtCollision = 1;
-        }
-    }
-
-    void longCollision()
-    {
-        
-        if (velocity.x != 0)
-        {
-            seeThroughtCollision = 4f;            
-        }
-        else if (velocity.y > 0)
-        {
-            seeThroughtCollision = 2.5f;
-        } else if (velocity.y < 0)
-        {
-            seeThroughtCollision = 3f;
         }
     }
 }

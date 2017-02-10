@@ -6,6 +6,7 @@ public class BoxMovement : MonoBehaviour {
     public PlayerControl player;
     bool canMove = false;
     Vector2 diff;
+    public static bool pushingOnebox;
     // Use this for initialization
     void Start () {
         player = FindObjectOfType<PlayerControl>();
